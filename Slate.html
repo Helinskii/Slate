@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slate</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower"
+  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bubbler+One"
+  rel="stylesheet">
+  <link href="favicon.ico" rel="shortcut icon">
+  <link href="Slate.css" rel="stylesheet">
+  <link href="Slate.js" rel="javascript">
+  <script type="application/javascript">
+    function loadJS(file) {
+      var jsElm = document.createElement("script");
+      jsElm.type = "application/javascript";
+      jsElm.src = file;
+      document.body.appendChild(jsElm);
+    }
+
+    window.onload = function() {
+      loadJS('Slate.js');
+    };
+  </script>
+</head>
+
+<body bgcolor="SlateGray" onload="loadJS('Slate.js')">
+
+  <div>
+    <h1 align="center" id="heading"
+    style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">
+    Slate</h1>
+    <h4 align="center" id="sub-heading">Note it well.</h4>
+  </div>
+
+  <div id="side-bar">
+
+    <div id="buttons">
+      <button type="button" class="button" style="float: left" id="add-button">
+        Add</button>
+      <button type="button" class="button" style="float: right" id="sort-button">
+        Sort</button>
+    </div>
+  </div>
+
+  <div id="main-area">
+
+  </div>
+</body>
+</html>
