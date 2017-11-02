@@ -1,52 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+}
+
 body {
   margin: 0px;
   padding: 0px;
   height: 100%;
 }
 
-#heading {
+.main-container {
+  width: 100%;
+  padding: 15px 0;
+}
+
+#top-bar {
+  width: 80%;
   background-color: LightSkyBlue;
-  font: 8em "Indie Flower", cursive;
+  margin: 0 auto;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#heading {
+  font: 6em "Indie Flower", cursive;
   color: #A52A2A;
   margin-top: 0px;
-  margin-bottom: -50px;
-  padding-bottom: 0px;
+  margin-bottom: -35px;
 }
 
 #sub-heading {
+  margin: 0;
   font: 24px "Indie Flower", cursive;
-  margin-top: 0px;
-  padding-top: 0px;
-
 }
 
 #side-bar {
+  vertical-align: middle;
   width: 25%;
-  height: 100%;
   background-color: LightCoral;
-  margin-left: 0px;
-  padding-left: 0px;
+  margin-left: 10%;
+  margin-top: 15px;
   float: left;
-  border-style: solid;
-  border-width: 1px;
+  border: 1px solid;
   border-radius: 10px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 #buttons {
-  position: relative;
-  width: 100%;
   height: 50px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .button {
+  width: 80px;
   background-color: white;
   border: none;
   color: black;
   font: 30px FreeMono, monospace;
   margin: 10px;
-  width: 90px;
   border-radius: 12px;
   cursor: pointer;
   transition-duration: 0.5s;
@@ -61,53 +72,44 @@ body {
   outline: none;
 }
 
-#main-area {
-  float:right;
-  height: 100vh;
-  width: 70%;
-  margin-right: 20px;
-}
-
-.note-area {
-  background-color: cornsilk;
-  height: 100vh;
-  width: 100%;
-  overflow: auto;
-  border-radius: 10px;
+#input-note {
+  height: 400px;
+  background-color: #cce0ff;
   padding: 10px;
-  font: 2em 'Bubbler One', sans-serif;
-  display: none;
 }
 
-.note {
-  width: 95%;
-  height: 50px;
-  background-color: lightcyan;
-  margin: 5px 5px 15px 5px;
-  border-radius: 5px;
-  box-shadow: 0px 4px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  text-align: center;
-  vertical-align: middle;
-  line-height: 50px;
-  font-size: 20px;
-  font-family: 'Bubbler One', sans-serif;
+#title-input {
+  float: left;
+  font: 30px FreeMono, monospace;
+  width: 60%;
+  height: 40px;
+  background-color: white;
+  border: 1px dashed #afccf7;
 }
 
-.note:hover {
-  cursor: pointer;
+#content-input {
+  float: left;
+  border: 1px dashed #afccf7;
+  margin-top: 15px;
+  resize: none;
+  width: 100%;
+  height: 80%;
+  font: 30px FreeMono, monospace;
+  background-color: white;
 }
 
-.dustbin {
-  width: 20px;
+.priority {
+  border: 1px dashed #afccf7;
+  background-color: white;
+  font: 25px FreeMono, monospace;
   float: right;
-  margin-top: 14px;
-  margin-right: 20px;
-  box-shadow: 0px 4px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  border-radius: 2px;
+  height: 45px;
+  width: 150px;
 }
 
-.deleteButton {
-  float: right;
-  width: 23px;
-  margin: 12px;
+#note-area {
+  float:right;
+  width: 80%;
+  margin-right: 10%;
+  margin-top: 15px;
 }

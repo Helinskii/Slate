@@ -1,16 +1,5 @@
 'user strict';
 
-window.addEventListener("load", function() {
-  var storedNotes = localStorage.getItem("notes");
-  if (storedNotes) {
-    notes = JSON.parse(storedNotes);
-    noteCount = Number(localStorage.getItem('noteCount'));
-    for(var i = 0; i < notes.length; ++i) {
-      noteAdd(notes[i]);
-    }
-  }
-});
-
 var notes = [];
 var noteCount = 0;
 var priorityClasses = {
@@ -19,62 +8,38 @@ var priorityClasses = {
   1 : 'low',
 };
 
-var add = document.getElementById("add-button");
-add.addEventListener("click", addNote);
-
 function noteCreate() {
   var newNote = {};
   newNote.id = noteCount;
-  newNote.title = prompt("Enter a name for the note");
+  newNote.title = $("#title-input").val();
+  newNote.content = $("#content-input").val();
+  newNote.priority = $(".priority").val();
 
+  noteCount++;
+  notes.push(newNote);
+  noteAdd(newNote);
 }
 
-function addNote() {
-  var mainClass = "wholenote" + noteCount;
-  var note_name = prompt("Enter a name for the note");
-  var div = document.createElement("div");
-  var node = document.createTextNode(note_name);
-  div.appendChild(node);
-  div.className = "note";
-  div.className += " " + mainClass;
+function noteAdd(note) {
+  var newNoteContainer = document.createElement('div');
+  var newNoteBody = document.createElement('div');
+  var newNoteTitle = document.createElement('h2');
 
-  var deleteButton = document.createElement("input");
-  deleteButton_id = "deletetheNote" + noteCount;
-  deleteButton.setAttribute("id", deleteButton_id);
-  deleteButton.setAttribute("type", "image");
-  deleteButton.setAttribute("src", "Dustbin.png");
-  deleteButton.className += "deleteButton";
-  div.appendChild(deleteButton);
+  newNoteTitle.innerHTML = note.title;
+  newNoteBody.innerHTML = note.content;
 
-  var element = document.getElementById("side-bar");
-  element.appendChild(div);
+  newNoteContainer.className = "note";
+  newNoteContainer.className = " " + priorityClasses[note.priority];
+  newNoteTitle.className = "note-title";
+  newNoteBody.className = "note-body";
 
-  noteArea = document.createElement("div");
-  noteArea.className = "note-area";
-  noteArea.className += " " + mainClass;
-  var noteName = "note" + noteCount;
-  noteArea.setAttribute("id", noteName);
-  noteArea.setAttribute("contentEditable", "true");
-  document.getElementById("main-area").appendChild(noteArea);
+  newNoteContainer.id = "note-" + note.id;
 
+  newNoteContainer.appendChild(newNoteTitle);
+  newNoteContainer.appendChild(newNoteBody);
 
-  div.addEventListener("click", function() {
-    var target = document.getElementById("main-area").children;
-    for (var i = 0; i < target.length; i++) {
-      target[i].style.display = 'none';
-    }
-    document.getElementById(noteName).style.display = "block";
-    document.getElementById(noteName).focus();
+  newNoteContainer.innerHTML += '<button title="Edit" class="note-button note-edit" onclick="noteEditStart(event)">📝</button>';
+  newNoteContainer.innerHTML += '<button title="Close" class="note-button note-close" onclick="noteDelete(event)">✘</button>';
 
-    //setEnd(noteName);
-  }, true);
-
-  deleteButton.addEventListener("click", function() {
-    var elems = document.getElementsByClassName(mainClass);
-    for (var k = elems.length - 1; k >= 0; k--) {
-      var parent = elems[k].parentNode;
-      parent.removeChild(elems[k]);
-    }
-  });
-  noteCount++;
+  document.querySelector('#note-area').appendChild(newNoteContainer);
 }

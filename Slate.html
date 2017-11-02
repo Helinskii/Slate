@@ -12,6 +12,7 @@
   <link href="favicon.ico" rel="shortcut icon">
   <link href="Slate.css" rel="stylesheet">
   <link href="Slate.js" rel="javascript">
+  <script type="text/javascript" src="jquery.min.js"></script>
   <script type="application/javascript">
     function loadJS(file) {
       var jsElm = document.createElement("script");
@@ -26,27 +27,29 @@
   </script>
 </head>
 
-<body bgcolor="SlateGray" onload="loadJS('Slate.js')">
-
-  <div>
-    <h1 align="center" id="heading"
-    style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">
-    Slate</h1>
-    <h4 align="center" id="sub-heading">Note it well.</h4>
-  </div>
-
-  <div id="side-bar">
-
-    <div id="buttons">
-      <button type="button" class="button" style="float: left" id="add-button">
-        Add</button>
-      <button type="button" class="button" style="float: right" id="sort-button">
-        Sort</button>
+<body bgcolor="SlateGray">
+  <div class="main-container">
+    <div id="top-bar">
+      <h1 align="center" id="heading">Slate</h1>
+      <h4 align="center" id="sub-heading">Note it well.</h4>
     </div>
-  </div>
-
-  <div id="main-area">
-
+    <div id="side-bar">
+      <div id="buttons">
+        <button type="button" class="button" style="float: left;" id="add-button" onclick="noteCreate(event)">Add</button>
+        <button type="button" class="button" style="float: right;" id="sort-button" onclick="noteSort()">Sort</button>
+      </div>
+      <div id="input-note">
+        <input type="text" id="title-input" placeholder="Enter Title">
+        <select name="priority" class="priority">
+          <option value="3">High</option>
+          <option value="2" selected>Medium</option>
+          <option value="1">Low</option>
+        </select>
+        <textarea id="content-input" placeholder="Say something."></textarea>
+      </div>
+    </div>
+    <div id="note-area">
+    </div>
   </div>
 </body>
 </html>
