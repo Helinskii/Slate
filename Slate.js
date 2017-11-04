@@ -56,3 +56,29 @@ function noteDelete(event) {
     }
   }
 }
+
+function noteEditStart(event) {
+  var elementToEdit = event.target.parentNode;
+  var elementCountId = Number(elementToEdit.id.split('-')[1]);
+  var currentNote = {};
+
+  for (var i = notes.length - 1; i >= 0; --i) {
+    if (notes[i].id == elementCountId) {
+      currentNote = notes[i];
+      break;
+    }
+  }
+
+  elementToEdit.innerHTML = "";
+
+  elementToEdit.innerHTML += '<input class="title" value="' + currentNote.title + '"></input>';
+
+  elementToEdit.innerHTML += '<textarea class="content">' + currentNote.content + '</textarea>';
+
+  elementToEdit.innerHTML += '<select name="priority" class="priority">' +
+                             '<option value="3">High</option>' +
+                             '<option value="2">Medium</option>' +
+                             '<option value="1">Low</option>' +
+                             '</select>';
+  elementToEdit.innerHTML += '<button onclick="noteEditFinish(event)">Finish Edit</button>';
+}
