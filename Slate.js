@@ -43,3 +43,16 @@ function noteAdd(note) {
 
   document.querySelector('#notes-container').appendChild(newNoteContainer);
 }
+
+function noteDelete(event) {
+  var elementToDelete = event.target.parentNode;
+  elementToDelete.remove();
+
+  var elementCountId = Number(elementToDelete.id.split('-')[1]);
+  for (var i = notes.length - 1; i >= 0; --i) {
+    if (notes[i].id == elementCountId) {
+      notes.splice(i, 1);
+      break;
+    }
+  }
+}
