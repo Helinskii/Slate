@@ -80,8 +80,8 @@ body {
 
 #title-input {
   float: left;
-  font: 30px FreeMono, monospace;
-  width: 60%;
+  font: 20px FreeMono, monospace;
+  width: 50%;
   height: 40px;
   background-color: white;
   border: 1px dashed #afccf7;
@@ -94,7 +94,7 @@ body {
   resize: none;
   width: 100%;
   height: 80%;
-  font: 30px FreeMono, monospace;
+  font: 25px FreeMono, monospace;
   background-color: white;
 }
 
@@ -107,9 +107,80 @@ body {
   width: 150px;
 }
 
-#note-area {
-  float:right;
-  width: 80%;
+#notes-container {
   margin-right: 10%;
   margin-top: 15px;
+  text-align: left;
+  width: 52.5%;
+  float: right;
+  background-color: white;
+}
+
+.note {
+  color: black;
+  position: relative;
+  min-width: 150px;
+  min-height: 150px;
+  margin: 15px;
+  display: inline-block;
+}
+
+.note-title {
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  margin: 5px;
+  text-align: left;
+}
+
+.note-body {
+  text-align: left;
+  font-family: 'Covered By Your Grace', cursive;
+  padding: 5px;
+  font-size: 15px;
+  max-width: 200px;
+  word-wrap: break-word;
+}
+
+.low {
+  background-color: #B9E397;
+}
+
+.medium {
+    background-color: #ffff80;
+}
+
+.high {
+    background-color: #D69496;
+}
+
+.note-button {
+  color: white;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  font-size: 10px;
+  opacity: 0.3;
+  border: none;
+  z-index: 100;
+  background-color: gray;
+  float: right;
+  margin: 5px 3px;
+  border-radius: 50%;
+}
+
+.note-edit {
+  right: 50px;
+  top: 5%;
+}
+
+.note-close {
+  right: 6px;
+  top: 5%;
+}
+
+.note-button:hover {
+  opacity: 1;
 }

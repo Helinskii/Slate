@@ -23,13 +23,16 @@ function noteCreate() {
 function noteAdd(note) {
   var newNoteContainer = document.createElement('div');
   var newNoteBody = document.createElement('div');
-  var newNoteTitle = document.createElement('h2');
+  var newNoteTitle = document.createElement('h3');
+
+  newNoteContainer.innerHTML += '<button title="Close" class="note-button note-close" onclick="noteDelete(event)">✘</button>';
+  newNoteContainer.innerHTML += '<button title="Edit" class="note-button note-edit" onclick="noteEditStart(event)">📝</button>';
 
   newNoteTitle.innerHTML = note.title;
   newNoteBody.innerHTML = note.content;
 
   newNoteContainer.className = "note";
-  newNoteContainer.className = " " + priorityClasses[note.priority];
+  newNoteContainer.className += " " + priorityClasses[note.priority];
   newNoteTitle.className = "note-title";
   newNoteBody.className = "note-body";
 
@@ -38,8 +41,5 @@ function noteAdd(note) {
   newNoteContainer.appendChild(newNoteTitle);
   newNoteContainer.appendChild(newNoteBody);
 
-  newNoteContainer.innerHTML += '<button title="Edit" class="note-button note-edit" onclick="noteEditStart(event)">📝</button>';
-  newNoteContainer.innerHTML += '<button title="Close" class="note-button note-close" onclick="noteDelete(event)">✘</button>';
-
-  document.querySelector('#note-area').appendChild(newNoteContainer);
+  document.querySelector('#notes-container').appendChild(newNoteContainer);
 }
