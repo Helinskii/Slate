@@ -1,4 +1,4 @@
-This is my first note-taking webpage. Still trying to implement local storage
-using JSON.
+This is a basic note-taking app.
+It stores your notes locally on your computer. 
 
 - Helinski
