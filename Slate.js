@@ -75,10 +75,46 @@ function noteEditStart(event) {
 
   elementToEdit.innerHTML += '<textarea class="content">' + currentNote.content + '</textarea>';
 
-  elementToEdit.innerHTML += '<select name="priority" class="priority">' +
+  elementToEdit.innerHTML += '<select name="priority" class="priority-edit">' +
                              '<option value="3">High</option>' +
                              '<option value="2">Medium</option>' +
                              '<option value="1">Low</option>' +
                              '</select>';
   elementToEdit.innerHTML += '<button onclick="noteEditFinish(event)">Finish Edit</button>';
+}
+
+function noteEditFinish(event) {
+  var elementToEdit = event.target.parentNode;
+  var elementCountId = Number(elementToEdit.id.split('-')[1]);
+
+  var newTitle = elementToEdit.querySelectorAll('input')[0].value;
+  var newContent = elementToEdit.querySelectorAll('textarea')[0].value;
+  var newPriority = elementToEdit.querySelectorAll('select')[0].value;
+
+  var newNoteBody = document.createElement('div');
+  var newNoteTitle = document.createElement('h3');
+
+  newNoteTitle.innerHTML = newTitle;
+  newNoteBody.innerHTML = newContent;
+
+  newNoteTitle.className = "note-title";
+  newNoteBody.className = "note-body";
+
+  for (var i = notes.length - 1; i >= 0; --i) {
+    if (notes[i].id === elementCountId) {
+      notes[i].title =  newTitle;
+      notes[i].content = newContent;
+      break;
+    }
+  }
+
+  elementToEdit.innerHTML = "";
+  elementToEdit.innerHTML += '<button title="Close" class="note-button note-close" onclick="noteDelete(event)">✘</button>';
+
+  elementToEdit.innerHTML += '<button title="Edit" class="note-button note-edit" onclick="noteEditStart(event)">📝</button>';
+
+  elementToEdit.appendChild(newNoteTitle);
+  elementToEdit.appendChild(newNoteBody);
+
+  elementToEdit.className = "note " + priorityClasses[newPriority];
 }
