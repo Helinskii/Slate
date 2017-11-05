@@ -8,6 +8,18 @@ var priorityClasses = {
   1 : 'low',
 };
 
+window.addEventListener("load",function () {
+    var storedNotes = localStorage.getItem("notes");
+    if (storedNotes) {
+      notes = JSON.parse(storedNotes);
+      noteCount = Number(localStorage.getItem('noteCount'));
+      for(var i = 0; i < notes.length; ++i) {
+          noteAdd(notes[i]);
+      }
+    }
+});
+
+
 function noteCreate() {
   var newNote = {};
   newNote.id = noteCount;
@@ -22,6 +34,8 @@ function noteCreate() {
   $("#title-input").val('');
   $("#content-input").val('');
   $(".priority").val('2');
+
+  noteStore();
 }
 
 function noteAdd(note) {
@@ -59,6 +73,8 @@ function noteDelete(event) {
       break;
     }
   }
+
+  noteStore();
 }
 
 function noteEditStart(event) {
@@ -124,6 +140,8 @@ function noteEditFinish(event) {
   elementToEdit.appendChild(newNoteBody);
 
   elementToEdit.className = "note " + priorityClasses[newPriority];
+
+  noteStore();
 }
 
 function noteSort() {
@@ -141,4 +159,11 @@ function noteSort() {
   for (var i = 0; i < notes.length; ++i) {
     noteAdd(notes[i]);
   }
+
+  noteStore();
+}
+
+function noteStore() {
+    localStorage.setItem('notes',JSON.stringify(notes));
+    localStorage.setItem('noteCount',String(noteCount));
 }

@@ -12,20 +12,7 @@
   rel="stylesheet">
   <link href="favicon.ico" rel="shortcut icon">
   <link href="Slate.css" rel="stylesheet">
-  <link href="Slate.js" rel="javascript">
   <script type="text/javascript" src="jquery.min.js"></script>
-  <script type="application/javascript">
-    function loadJS(file) {
-      var jsElm = document.createElement("script");
-      jsElm.type = "application/javascript";
-      jsElm.src = file;
-      document.body.appendChild(jsElm);
-    }
-
-    window.onload = function() {
-      loadJS('Slate.js');
-    };
-  </script>
 </head>
 
 <body bgcolor="SlateGray">
@@ -52,5 +39,7 @@
     <div id="notes-container">
     </div>
   </div>
+
+  <script type="text/javascript" src="Slate.js"></script>
 </body>
 </html>
