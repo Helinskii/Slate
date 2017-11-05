@@ -22,6 +22,7 @@ input, textarea, select, button {
 
 textarea {
   min-height: 100px;
+
 }
 
 button {
@@ -135,6 +136,7 @@ button {
   max-width: 52.5%;
   float: left;
   background-color: white;
+  border-radius: 10px;
 }
 
 .note {
@@ -142,9 +144,9 @@ button {
   position: relative;
   min-width: 160px;
   min-height: 180px;
-  margin: 25px;
+  margin: 20px;
   display: inline-block;
-  padding: 2px;
+  padding: 5px;
 }
 
 .note-title {
@@ -205,4 +207,15 @@ button {
 
 .note-button:hover {
   opacity: 1;
+}
+
+.title {
+  margin: 2px auto;
+  width: 200px;
+}
+
+.content {
+  margin: 2px;
+  width: 200px;
+  word-wrap: break-word;
 }

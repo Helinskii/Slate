@@ -18,6 +18,10 @@ function noteCreate() {
   noteCount++;
   notes.push(newNote);
   noteAdd(newNote);
+
+  $("#title-input").val('');
+  $("#content-input").val('');
+  $(".priority").val('2');
 }
 
 function noteAdd(note) {
@@ -81,6 +85,8 @@ function noteEditStart(event) {
                              '<option value="1">Low</option>' +
                              '</select>';
   elementToEdit.innerHTML += '<button onclick="noteEditFinish(event)">Finish Edit</button>';
+
+  elementToEdit.querySelectorAll('select')[0].value = currentNote.priority;
 }
 
 function noteEditFinish(event) {
@@ -104,6 +110,7 @@ function noteEditFinish(event) {
     if (notes[i].id === elementCountId) {
       notes[i].title =  newTitle;
       notes[i].content = newContent;
+      notes[i].priority = newPriority;
       break;
     }
   }
