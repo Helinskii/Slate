@@ -32,6 +32,21 @@ button {
   padding: 2px;
 }
 
+@font-face {
+  font-family: 'Nothing You Could Do';
+  src: url('fonts/NothingYouCouldDo.ttf');
+}
+
+@font-face {
+  font-family: 'Damion';
+  src: url('fonts/Damion-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Bubbler One';
+  src: url('fonts/BubblerOne-Regular.ttf');
+}
+
 .main-container {
   width: 100%;
   padding: 15px 0;
@@ -39,24 +54,25 @@ button {
 
 #top-bar {
   width: 80%;
-  background-color: LightSkyBlue;
+  background-color: #cce0ff;
   margin: 0 auto;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 #heading {
-  font: 6em "Indie Flower", cursive;
-  color: #A52A2A;
+  font: 6em 'Nothing You Could Do', cursive;
+  color: #65aef7;
   margin-top: 0px;
-  margin-bottom: -35px;
+  margin-bottom: -30px;
 }
 
 #sub-heading {
   margin: 0;
-  font: 24px "Indie Flower", cursive;
+  font: 24px "Nothing You Could Do", cursive;
 }
 
 #side-bar {
+  position: fixed;
   vertical-align: middle;
   width: 25%;
   background-color: LightCoral;
@@ -98,15 +114,19 @@ button {
   height: 400px;
   background-color: #cce0ff;
   padding: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 #title-input {
   float: left;
-  font: 20px FreeMono, monospace;
+  font-family: 'Bubbler One', sans-serif;
+  font-size: 20px;
   width: 50%;
   height: 40px;
   background-color: white;
   border: 1px dashed #afccf7;
+  padding-left: 5px;
 }
 
 #content-input {
@@ -116,37 +136,44 @@ button {
   resize: none;
   width: 100%;
   height: 80%;
-  font: 25px FreeMono, monospace;
+  font-family: 'Bubbler One', sans-serif;
+  font-size: 25px;
   background-color: white;
+  overflow-x: hidden;
+  padding-left: 5px;
 }
 
 .priority {
   border: 1px dashed #afccf7;
   background-color: white;
-  font: 25px FreeMono, monospace;
+  font-family: 'Bubbler One', sans-serif;
+  font-size: 20px;
   float: right;
-  height: 45px;
+  height: 40px;
   width: 150px;
 }
 
 #notes-container {
-  margin-left: 2.5%;
+  margin-right: 10%;
   margin-top: 15px;
   text-align: left;
-  max-width: 52.5%;
-  float: left;
-  background-color: white;
+  width: 52.5%;
+  min-height: 480px;
+  float: right;
+  background-color: #c8dff7;
   border-radius: 10px;
 }
 
 .note {
+  font-family: 'Bubbler One', sans-serif;
+  float: left;
   color: black;
-  position: relative;
+  margin: 15px 20px;
+  padding: 5px;
   min-width: 160px;
   min-height: 180px;
-  margin: 20px;
-  display: inline-block;
-  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 20px 10px 30px #BBBBBB;
 }
 
 .note-title {
@@ -161,10 +188,10 @@ button {
 
 .note-body {
   text-align: left;
-  font-family: 'Covered By Your Grace', cursive;
+  font-family: 'Bubbler One', sans-serif;
   padding: 5px;
   font-size: 15px;
-  max-width: 150px;
+  width: 150px;
   word-wrap: break-word;
 }
 
@@ -177,22 +204,23 @@ button {
 }
 
 .high {
-    background-color: #D69496;
+    background-color: #F99F9F;
 }
 
 .note-button {
-  color: white;
+  color: black;
   width: 15px;
   height: 15px;
   cursor: pointer;
-  font-size: 10px;
-  opacity: 0.3;
+  font-size: 14px;
+  opacity: 0.5;
   border: none;
   z-index: 100;
-  background-color: gray;
+  background-color: white;
   float: right;
   margin: 5px 3px;
   border-radius: 50%;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .note-edit {
@@ -211,11 +239,22 @@ button {
 
 .title {
   margin: 2px auto;
-  width: 200px;
+  width: 180px;
 }
 
 .content {
   margin: 2px;
-  width: 200px;
+  width: 180px;
   word-wrap: break-word;
+}
+
+.footer-content {
+  color: white;
+  position: fixed;
+  width: 100%;
+  right: 10px;
+  bottom: 10px;
+  text-align: right;
+  font-family: 'Bubbler one', sans-serif;
+  font-size: 20px;
 }

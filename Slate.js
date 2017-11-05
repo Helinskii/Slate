@@ -43,8 +43,8 @@ function noteAdd(note) {
   var newNoteBody = document.createElement('div');
   var newNoteTitle = document.createElement('h3');
 
-  newNoteContainer.innerHTML += '<button title="Close" class="note-button note-close" onclick="noteDelete(event)">✘</button>';
-  newNoteContainer.innerHTML += '<button title="Edit" class="note-button note-edit" onclick="noteEditStart(event)">📝</button>';
+  newNoteContainer.innerHTML += '<button title="Close" class="note-button note-close" onclick="noteDelete(event)">&#9747</button>';
+  newNoteContainer.innerHTML += '<button title="Edit" class="note-button note-edit" onclick="noteEditStart(event)">✎</button>';
 
   newNoteTitle.innerHTML = note.title;
   newNoteBody.innerHTML = note.content;
