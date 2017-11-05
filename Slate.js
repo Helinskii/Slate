@@ -118,3 +118,20 @@ function noteEditFinish(event) {
 
   elementToEdit.className = "note " + priorityClasses[newPriority];
 }
+
+function noteSort() {
+  var compare = function (a, b) {
+    if (a.priority < b.priority)
+        return 1;
+    if (a.priority > b.priority)
+        return -1;
+    return 0;
+  }
+
+  notes = notes.sort(compare);
+
+  document.querySelector('#notes-container').innerHTML = "";
+  for (var i = 0; i < notes.length; ++i) {
+    noteAdd(notes[i]);
+  }
+}
