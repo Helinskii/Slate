@@ -1,0 +1,74 @@
+function storageAvailable(type) {
+      try {
+          var storage = window[type],
+              x = '__storage_test__';
+          storage.setItem(x, x);
+          storage.removeItem(x);
+          return true;
+      }
+      catch(e) {
+          return e instanceof DOMException && (
+              // everything except Firefox
+              e.code === 22 ||
+              // Firefox
+              e.code === 1014 ||
+              // test name field too, because code might not be present
+              // everything except Firefox
+              e.name === 'QuotaExceededError' ||
+              // Firefox
+              e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+              // acknowledge QuotaExceededError only if there's something already stored
+              storage.length !== 0;
+      }
+  }
+
+  if (storageAvailable('localStorage')) {
+    console.log("Available");
+  }
+  else {
+    console.log("No local storage available");
+  }
+
+  function populateStorage() {
+    var notes = document.getElementsByClassName('note');
+    for (var i = 0; i < notes.length; i++) {
+      localStorage.setItem("note" + i, notes[i].firstChild);
+      console.log(notes[i].firstChild);
+    }
+    localStorage.setItem("length", notes.length);
+
+    setPage();
+  }
+
+  function setPage() {
+    var notes = document.getElementsByClassName('note');
+    var length = localStorage.getItem("length");
+    for (var i = 0; i < length; i++) {
+      var noteName = localStorage.getItem('note' + i);
+      var child = document.createTextNode(noteName);
+      var parent = document.getElementById('side-bar');
+      var div = document.createElement("div");
+      div.appendChild(child);
+      div.className = "note";
+      div.className += " " + mainClass;
+
+      var inputButton = document.createElement("input");
+      inputButton_id = "deletetheNote" + i;
+      inputButton.setAttribute("id", inputButton_id);
+      inputButton.setAttribute("type", "image");
+      inputButton.setAttribute("src", "Dustbin.png");
+      inputButton.className += "deleteButton";
+      div.appendChild(inputButton);
+
+      parent.appendChild(div);
+
+      console.log("page set");
+    }
+  }
+
+  if (!localStorage.getItem("note0")) {
+    populateStorage();
+  }
+  else {
+    setPage();
+  }
