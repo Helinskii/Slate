@@ -7,4 +7,4 @@ _Slate is a static, browser based note-taking app made using `HTML`, `CSS`, `Jav
 * Based on the priority level given to notes, they can be sorted by clicking on `Sort`.
 * All the notes are stored as `JSON objects` locally on the users device. They automatically get retreived on re-launcing the application.
 
-![Slate](/img1.png)
+![Slate](/public/screenshots/img1.png)
